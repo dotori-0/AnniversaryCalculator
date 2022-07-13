@@ -13,6 +13,7 @@
 		0A2B1F93287EDCD200A71785 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A2B1F91287EDCD200A71785 /* Main.storyboard */; };
 		0A2B1F95287EDCD600A71785 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A2B1F94287EDCD600A71785 /* Assets.xcassets */; };
 		0A2B1F98287EDCD600A71785 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A2B1F96287EDCD600A71785 /* LaunchScreen.storyboard */; };
+		0A2B1FA0287EEA6300A71785 /* DDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2B1F9F287EEA6300A71785 /* DDayViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		0A2B1F94287EDCD600A71785 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A2B1F97287EDCD600A71785 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A2B1F99287EDCD600A71785 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0A2B1F9F287EEA6300A71785 /* DDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDayViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				0A2B1F8B287EDCD200A71785 /* AppDelegate.swift */,
 				0A2B1F8D287EDCD200A71785 /* SceneDelegate.swift */,
 				0A2B1F8F287EDCD200A71785 /* ViewController.swift */,
+				0A2B1F9F287EEA6300A71785 /* DDayViewController.swift */,
 				0A2B1F91287EDCD200A71785 /* Main.storyboard */,
 				0A2B1F94287EDCD600A71785 /* Assets.xcassets */,
 				0A2B1F96287EDCD600A71785 /* LaunchScreen.storyboard */,
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A2B1FA0287EEA6300A71785 /* DDayViewController.swift in Sources */,
 				0A2B1F90287EDCD200A71785 /* ViewController.swift in Sources */,
 				0A2B1F8C287EDCD200A71785 /* AppDelegate.swift in Sources */,
 				0A2B1F8E287EDCD200A71785 /* SceneDelegate.swift in Sources */,
@@ -294,7 +298,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -322,7 +326,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
