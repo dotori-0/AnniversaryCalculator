@@ -19,6 +19,9 @@
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="121-nd-vGt">
                                 <rect key="frame" x="0.0" y="57" width="414" height="409"/>
+                                <connections>
+                                    <action selector="dateValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Lh1-0b-dZV"/>
+                                </connections>
                             </datePicker>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="DfH-OQ-fdN">
                                 <rect key="frame" x="41.5" y="497.5" width="331" height="329.5"/>
