@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		0A1712AC287FAEE3007B1EFA /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1712AB287FAEE3007B1EFA /* SideMenu */; };
 		0A1712B2287FAFCD007B1EFA /* TextFieldEffects in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1712B1287FAFCD007B1EFA /* TextFieldEffects */; };
-		0A1712B4287FB223007B1EFA /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A1712B3287FB223007B1EFA /* Search.storyboard */; };
 		0A1712B7287FBE42007B1EFA /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1712B6287FBE42007B1EFA /* IQKeyboardManagerSwift */; };
 		0A1712B9287FC2D0007B1EFA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1712B8287FC2D0007B1EFA /* SearchViewController.swift */; };
 		0A1712BF287FCF0B007B1EFA /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1712BE287FCF0B007B1EFA /* FSCalendar */; };
+		0A1712C12880327E007B1EFA /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A1712C02880327D007B1EFA /* Search.storyboard */; };
 		0A2B1F8C287EDCD200A71785 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2B1F8B287EDCD200A71785 /* AppDelegate.swift */; };
 		0A2B1F8E287EDCD200A71785 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2B1F8D287EDCD200A71785 /* SceneDelegate.swift */; };
 		0A2B1F90287EDCD200A71785 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2B1F8F287EDCD200A71785 /* ViewController.swift */; };
@@ -23,9 +23,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0A1712B3287FB223007B1EFA /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = SOURCE_ROOT; };
 		0A1712B8287FC2D0007B1EFA /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		0A2B1F88287EDCD200A71785 /* DDayCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DDayCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A1712C02880327D007B1EFA /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
+		0A2B1F88287EDCD200A71785 /* AnniversaryCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnniversaryCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A2B1F8B287EDCD200A71785 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A2B1F8D287EDCD200A71785 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0A2B1F8F287EDCD200A71785 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,7 +54,7 @@
 		0A2B1F7F287EDCD100A71785 = {
 			isa = PBXGroup;
 			children = (
-				0A2B1F8A287EDCD200A71785 /* DDayCalculator */,
+				0A2B1F8A287EDCD200A71785 /* AnniversaryCalculator */,
 				0A2B1F89287EDCD200A71785 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -62,15 +62,15 @@
 		0A2B1F89287EDCD200A71785 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0A2B1F88287EDCD200A71785 /* DDayCalculator.app */,
+				0A2B1F88287EDCD200A71785 /* AnniversaryCalculator.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		0A2B1F8A287EDCD200A71785 /* DDayCalculator */ = {
+		0A2B1F8A287EDCD200A71785 /* AnniversaryCalculator */ = {
 			isa = PBXGroup;
 			children = (
-				0A1712B3287FB223007B1EFA /* Search.storyboard */,
+				0A1712C02880327D007B1EFA /* Search.storyboard */,
 				0A2B1F8B287EDCD200A71785 /* AppDelegate.swift */,
 				0A2B1F8D287EDCD200A71785 /* SceneDelegate.swift */,
 				0A2B1F8F287EDCD200A71785 /* ViewController.swift */,
@@ -81,15 +81,15 @@
 				0A2B1F96287EDCD600A71785 /* LaunchScreen.storyboard */,
 				0A2B1F99287EDCD600A71785 /* Info.plist */,
 			);
-			path = DDayCalculator;
+			path = AnniversaryCalculator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0A2B1F87287EDCD200A71785 /* DDayCalculator */ = {
+		0A2B1F87287EDCD200A71785 /* AnniversaryCalculator */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0A2B1F9C287EDCD600A71785 /* Build configuration list for PBXNativeTarget "DDayCalculator" */;
+			buildConfigurationList = 0A2B1F9C287EDCD600A71785 /* Build configuration list for PBXNativeTarget "AnniversaryCalculator" */;
 			buildPhases = (
 				0A2B1F84287EDCD200A71785 /* Sources */,
 				0A2B1F85287EDCD200A71785 /* Frameworks */,
@@ -99,7 +99,7 @@
 			);
 			dependencies = (
 			);
-			name = DDayCalculator;
+			name = AnniversaryCalculator;
 			packageProductDependencies = (
 				0A1712AB287FAEE3007B1EFA /* SideMenu */,
 				0A1712B1287FAFCD007B1EFA /* TextFieldEffects */,
@@ -107,7 +107,7 @@
 				0A1712BE287FCF0B007B1EFA /* FSCalendar */,
 			);
 			productName = DDayCalculator;
-			productReference = 0A2B1F88287EDCD200A71785 /* DDayCalculator.app */;
+			productReference = 0A2B1F88287EDCD200A71785 /* AnniversaryCalculator.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -125,7 +125,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 0A2B1F83287EDCD200A71785 /* Build configuration list for PBXProject "DDayCalculator" */;
+			buildConfigurationList = 0A2B1F83287EDCD200A71785 /* Build configuration list for PBXProject "AnniversaryCalculator" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -144,7 +144,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0A2B1F87287EDCD200A71785 /* DDayCalculator */,
+				0A2B1F87287EDCD200A71785 /* AnniversaryCalculator */,
 			);
 		};
 /* End PBXProject section */
@@ -156,8 +156,8 @@
 			files = (
 				0A2B1F98287EDCD600A71785 /* LaunchScreen.storyboard in Resources */,
 				0A2B1F95287EDCD600A71785 /* Assets.xcassets in Resources */,
-				0A1712B4287FB223007B1EFA /* Search.storyboard in Resources */,
 				0A2B1F93287EDCD200A71785 /* Main.storyboard in Resources */,
+				0A1712C12880327E007B1EFA /* Search.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,7 +320,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = DDayCalculator/Info.plist;
+				INFOPLIST_FILE = AnniversaryCalculator/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -332,7 +332,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sani.DDayCalculator;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sani.AnniversaryCalculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -348,7 +348,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = DDayCalculator/Info.plist;
+				INFOPLIST_FILE = AnniversaryCalculator/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -360,7 +360,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sani.DDayCalculator;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sani.AnniversaryCalculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -371,7 +371,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0A2B1F83287EDCD200A71785 /* Build configuration list for PBXProject "DDayCalculator" */ = {
+		0A2B1F83287EDCD200A71785 /* Build configuration list for PBXProject "AnniversaryCalculator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0A2B1F9A287EDCD600A71785 /* Debug */,
@@ -380,7 +380,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0A2B1F9C287EDCD600A71785 /* Build configuration list for PBXNativeTarget "DDayCalculator" */ = {
+		0A2B1F9C287EDCD600A71785 /* Build configuration list for PBXNativeTarget "AnniversaryCalculator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0A2B1F9D287EDCD600A71785 /* Debug */,
