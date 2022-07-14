@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DDayViewController: UIViewController {
+class AnniversaryCalendarViewController: UIViewController {
 
 
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -36,6 +36,7 @@ class DDayViewController: UIViewController {
     var backgroundImageArray = [UIImage(named: "icecream"), UIImage(named: "macarons"), UIImage(named: "doughnut"), UIImage(named: "cake")]
 
     @IBOutlet weak var testView: UIView!
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
