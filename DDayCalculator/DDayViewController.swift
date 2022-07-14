@@ -48,7 +48,7 @@ class DDayViewController: UIViewController {
         dateLabelArray = [dateLabel0, dateLabel1, dateLabel2, dateLabel3]
 
         designImageviews()
-        designDaysLeftLabels()
+        designDayX00Labels()
         designDateLabels()
 
 //        testView.layer.shadowColor = UIColor.black.cgColor
@@ -57,6 +57,9 @@ class DDayViewController: UIViewController {
 //        testView.layer.shadowOpacity = 1.0
 
     }
+
+
+    // MARK: - Methods
 
     func setDatePickerStyle() {
         if #available(iOS 14.0, *) {
@@ -91,14 +94,15 @@ class DDayViewController: UIViewController {
         }
     }
 
-    func designDaysLeftLabels() {
+
+    func designDayX00Labels() {
         var hundreds = 1
 
-        for daysLeftLabel in dayX00LabelArray {
-            daysLeftLabel.font = UIFont.systemFont(ofSize: 20, weight: .black)
-            daysLeftLabel.textColor = .white
+        for dayX00Label in dayX00LabelArray {
+            dayX00Label.font = UIFont.systemFont(ofSize: 20, weight: .black)
+            dayX00Label.textColor = .white
 
-            daysLeftLabel.text = "D+\(hundreds)00"
+            dayX00Label.text = "D+\(hundreds)00"
 
             hundreds += 1
         }
@@ -109,6 +113,7 @@ class DDayViewController: UIViewController {
 //        day400Label.text = "D+400"
     }
 
+
     func designDateLabels() {
         for dateLabel in dateLabelArray {
             dateLabel.text = nil
@@ -118,61 +123,95 @@ class DDayViewController: UIViewController {
         }
     }
 
-    func updateDateLabel(day100: String, day200: String, day300: String, day400: String) {
-        dateLabel0.text = day100
-        dateLabel1.text = day200
-        dateLabel2.text = day300
-        dateLabel3.text = day400
+
+    func calculateDates(selectedDate: Date) -> [Date] {
+        var dayX00DatesArray: [Date] = []
+
+        for daysAfter in stride(from: 100, through: 400, by: 100) {  // 100부터 400(포함)까지 100의 간격으로 반복
+            // 미포함은 through 대신 to
+            let dayX00Date = Calendar.current.date(byAdding: .day, value: daysAfter, to: selectedDate)!
+            dayX00DatesArray.append(dayX00Date)
+        }
+
+        return dayX00DatesArray
     }
 
+
+    func formatDates(_ dayX00DatesArray: [Date]) -> [String] {
+        let formatter = DateFormatter()  // DateFormatter가 클래스이기 때문에 let으로 만들어도 수정 가능
+        formatter.dateFormat = "yyyy년\n MM월 dd일"
+
+        var dayX00FormattedArray: [String] = []
+
+        for dayX00Date in dayX00DatesArray {
+            let dayX00Formatted = formatter.string(from: dayX00Date)
+            dayX00FormattedArray.append(dayX00Formatted)
+        }
+
+        return dayX00FormattedArray
+    }
+
+
+    func updateDateLabel(_ dayX00FormattedArray: [String]) {
+        for i in 0..<dateLabelArray.count {
+            dateLabelArray[i].text = dayX00FormattedArray[i]
+        }
+    }
+
+    // MARK: - Action
 
     @IBAction func dateValueChanged(_ sender: UIDatePicker) {
         print(sender.date)
 //        type(of: sender.datePickerStyle)
         print(type(of: sender.date))
 
-
+/*
 //        let word = "3월 2일, 19년"
 //        let dateResult = format0.date(from: word)
 //        print(dateResult)
 
-        let formatter = DateFormatter()  // DateFormatter가 클래스이기 때문에 let으로 만들어도 수정 가능
+//        let formatter = DateFormatter()  // DateFormatter가 클래스이기 때문에 let으로 만들어도 수정 가능
 //        formatter.dateFormat = "yyyy년 MM월 dd일 HH:mm:ss"  // Locale 없이도 KST로 변환됨
 //        print("string변환: \(formatter.string(from: sender.date))")
 
-        let day100 = Calendar.current.date(byAdding: .day, value: 100, to: sender.date)!
-        let day200 = Calendar.current.date(byAdding: .day, value: 200, to: sender.date)!
-        let day300 = Calendar.current.date(byAdding: .day, value: 300, to: sender.date)!
-        let day400 = Calendar.current.date(byAdding: .day, value: 400, to: sender.date)!
+//        let day100 = Calendar.current.date(byAdding: .day, value: 100, to: sender.date)!
+//        let day200 = Calendar.current.date(byAdding: .day, value: 200, to: sender.date)!
+//        let day300 = Calendar.current.date(byAdding: .day, value: 300, to: sender.date)!
+//        let day400 = Calendar.current.date(byAdding: .day, value: 400, to: sender.date)!
 
-        print(day100)
-        print(day200)
-        print(day300)
-        print(day400)
+//        print(day100)
+//        print(day200)
+//        print(day300)
+//        print(day400)
 
 //        formatter.locale = Locale(identifier: "ko-KR")
 //        formatter.dateStyle = .full
 //        formatter.dateStyle = .long
-        formatter.dateFormat = "yyyy년\n MM월 dd일"
+//        formatter.dateFormat = "yyyy년\n MM월 dd일"
 //        formatter.timeStyle = .full
-        let result = formatter.string(from: sender.date)
-        print("result: \(result)")
+//        let result = formatter.string(from: sender.date)
+//        print("result: \(result)")
 
-        let day100formatted = formatter.string(from: day100)
-        let day200formatted = formatter.string(from: day200)
-        let day300formatted = formatter.string(from: day300)
-        let day400formatted = formatter.string(from: day400)
-
-
-        updateDateLabel(day100: day100formatted, day200: day200formatted, day300: day300formatted, day400: day400formatted)
+//        let day100formatted = formatter.string(from: day100)
+//        let day200formatted = formatter.string(from: day200)
+//        let day300formatted = formatter.string(from: day300)
+//        let day400formatted = formatter.string(from: day400)
 
 
+//        updateDateLabel(day100: day100formatted, day200: day200formatted, day300: day300formatted, day400: day400formatted)
+*/
+
+        let dayX00DatesArray = calculateDates(selectedDate: sender.date)
+
+        let dayX00FormattedArray = formatDates(dayX00DatesArray)
+
+        updateDateLabel(dayX00FormattedArray)
 
 
-
-
-        // 날짜 계산
         // D-day 계산
+        /*
+        // 날짜 계산
+
         let daysLeft = Calendar.current.dateComponents([.day, .hour, .minute], from: Date(), to: sender.date)
 //        var daysLeft = Calendar.current.dateComponents([.day, .hour], from: Date(), to: sender.date).day
         // .day는 Optional<Int>
@@ -207,7 +246,10 @@ class DDayViewController: UIViewController {
         // 공평(?)하게 12시간을 기준으로 처리한다.
 
         print("🐣 변환 후 daysLeft: \(daysLeft)")
-
+        */
 
     }
+
+
 }
+
