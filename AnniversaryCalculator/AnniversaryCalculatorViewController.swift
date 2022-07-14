@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AnniversaryCalendarViewController: UIViewController {
+class AnniversaryCalculatorViewController: UIViewController {
 
 
     @IBOutlet weak var datePicker: UIDatePicker!
