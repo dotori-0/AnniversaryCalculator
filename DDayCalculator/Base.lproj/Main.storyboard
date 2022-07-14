@@ -256,10 +256,10 @@
                         <outlet property="dateLabel2" destination="ua6-ke-izd" id="hZN-3b-UO7"/>
                         <outlet property="dateLabel3" destination="pdb-0l-QWx" id="fkh-MG-yXH"/>
                         <outlet property="datePicker" destination="121-nd-vGt" id="Ycl-WI-Nqg"/>
-                        <outlet property="daysLeftLabel0" destination="2cf-di-NvL" id="Eiu-zC-Rgt"/>
-                        <outlet property="daysLeftLabel1" destination="nuS-v8-H6V" id="PBG-Yx-QNs"/>
-                        <outlet property="daysLeftLabel2" destination="VqW-WD-RKE" id="lGG-lE-7Cs"/>
-                        <outlet property="daysLeftLabel3" destination="ZIi-Sy-Vde" id="zFF-jq-1oR"/>
+                        <outlet property="day100Label" destination="2cf-di-NvL" id="Eiu-zC-Rgt"/>
+                        <outlet property="day200Label" destination="nuS-v8-H6V" id="PBG-Yx-QNs"/>
+                        <outlet property="day300Label" destination="VqW-WD-RKE" id="lGG-lE-7Cs"/>
+                        <outlet property="day400Label" destination="ZIi-Sy-Vde" id="zFF-jq-1oR"/>
                         <outlet property="imageView0" destination="mmM-oy-Dd9" id="PRB-tR-DYr"/>
                         <outlet property="imageView1" destination="FNa-m2-Fiv" id="A8P-kb-zOR"/>
                         <outlet property="imageView2" destination="av0-dp-VJn" id="NCS-6D-ifc"/>
