@@ -1,6 +1,6 @@
 //
-//  DDayViewController.swift
-//  DDayCalculator
+//  AnniversaryCalculatorViewController.swift
+//  AnniversaryCalculator
 //
 //  Created by SC on 2022/07/13.
 //
@@ -43,17 +43,22 @@ class AnniversaryCalculatorViewController: UIViewController {
 
     var selectedDate = UserDefaults.standard.string(forKey: "selectedDate")
 
+    let formatter = DateFormatter()  // DateFormatter가 클래스이기 때문에 let으로 만들어도 수정 가능
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        datePicker.preferredDatePickerStyle = .inline
-        setDatePickerStyle()
-        setDatePickerDate()
+        formatter.dateFormat = "yyyy년\nMM월 dd일"
 
         imageViewArray = [imageView0, imageView1, imageView2, imageView3]
         dayX00LabelArray = [day100Label, day200Label, day300Label, day400Label]
         dateLabelArray = [dateLabel0, dateLabel1, dateLabel2, dateLabel3]
+
+
+//        datePicker.preferredDatePickerStyle = .inline
+        setDatePickerStyle()
+        showDateAndAnniversaries()
 
         designImageviews()
         designDayX00Labels()
@@ -69,6 +74,9 @@ class AnniversaryCalculatorViewController: UIViewController {
 
     // MARK: - Methods
 
+
+    // MARK: - Design
+
     func setDatePickerStyle() {
         if #available(iOS 14.0, *) {
             datePicker.preferredDatePickerStyle = .inline
@@ -77,15 +85,6 @@ class AnniversaryCalculatorViewController: UIViewController {
         }
     }
 
-    func setDatePickerDate() {
-        let userDefaultsDate = UserDefaults.standard.string(forKey: SavedData.savedDate.rawValue)
-
-        let savedDate = userDefaultsDate == nil ? datePicker.date : stringToDate(userDefaultsDate!)
-        print("savedDate: \(savedDate)")
-
-        datePicker.date = savedDate
-    }
-    
 
     func designImageviews() {
         for i in 0..<imageViewArray.count {
@@ -128,12 +127,50 @@ class AnniversaryCalculatorViewController: UIViewController {
 
     func designDateLabels() {
         for dateLabel in dateLabelArray {
-            dateLabel.text = nil
+//            dateLabel.text = nil
 //            dateLabel.text = UserDefaults.standard.string(forKey: "selectedDate")
             dateLabel.textColor = .white
             dateLabel.textAlignment = .center
             dateLabel.numberOfLines = 0
         }
+    }
+
+
+    // MARK: - On Launch
+
+    func showDateAndAnniversaries() {
+        let userDefaultsDate = UserDefaults.standard.string(forKey: SavedData.savedDate.rawValue)
+
+        let savedDate = userDefaultsDate == nil ? datePicker.date : stringToDate(userDefaultsDate!)
+        print("savedDate: \(savedDate)")
+
+        datePicker.date = savedDate
+
+        processAll(savedDate)
+    }
+
+
+    // MARK: - Process Data
+
+    func dateToString(_ date: Date) -> String {
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "yyyy년\nMM월 dd일"
+
+        var stringDate: String
+        stringDate = formatter.string(from: date)
+
+        return stringDate
+    }
+
+
+    func stringToDate(_ stringDate: String) -> Date {
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "yyyy년\nMM월 dd일"
+
+        var date: Date
+        date = formatter.date(from: stringDate)!
+
+        return date
     }
 
 
@@ -151,13 +188,14 @@ class AnniversaryCalculatorViewController: UIViewController {
 
 
     func formatDates(_ dayX00DatesArray: [Date]) -> [String] {
-        let formatter = DateFormatter()  // DateFormatter가 클래스이기 때문에 let으로 만들어도 수정 가능
-        formatter.dateFormat = "yyyy년\n MM월 dd일"
+//        let formatter = DateFormatter()  // DateFormatter가 클래스이기 때문에 let으로 만들어도 수정 가능
+//        formatter.dateFormat = "yyyy년\n MM월 dd일"
 
         var dayX00FormattedArray: [String] = []
 
         for dayX00Date in dayX00DatesArray {
-            let dayX00Formatted = formatter.string(from: dayX00Date)
+//            let dayX00Formatted = formatter.string(from: dayX00Date)
+            let dayX00Formatted = dateToString(dayX00Date)
             dayX00FormattedArray.append(dayX00Formatted)
         }
 
@@ -165,51 +203,42 @@ class AnniversaryCalculatorViewController: UIViewController {
     }
 
 
-    func updateDateLabel(_ dayX00FormattedArray: [String]) {
+    func updateDateLabels(_ dayX00FormattedArray: [String]) {
         for i in 0..<dateLabelArray.count {
             dateLabelArray[i].text = dayX00FormattedArray[i]
         }
     }
 
 
+    func processAll(_ dateToProcess: Date) {
+        let dayX00DatesArray = calculateDates(selectedDate: dateToProcess)
+
+        let dayX00FormattedArray = formatDates(dayX00DatesArray)
+
+        updateDateLabels(dayX00FormattedArray)
+    }
+
+
+    // Save to UserDefaults
     func saveSelectedDate(_ selectedDate: Date) {
 //        UserDefaults.standard.set(selectedDate, forKey: "selectedDate")
         UserDefaults.standard.set(dateToString(_: selectedDate), forKey: SavedData.savedDate.rawValue)
-//        print(type(of: UserDefaults.standard.))
+
         print(UserDefaults.standard.string(forKey: SavedData.savedDate.rawValue)!)
     }
 
-
-    func dateToString(_ date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy년\nMM월 dd일"
-
-        var stringDate: String
-        stringDate = formatter.string(from: date)
-
-        return stringDate
-    }
-
-
-    func stringToDate(_ stringDate: String) -> Date {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy년\nMM월 dd일"
-
-        var date: Date
-        date = formatter.date(from: stringDate)!
-
-        return date
-    }
 
 
     // MARK: - Action
 
     @IBAction func dateValueChanged(_ sender: UIDatePicker) {
-        print(sender.date)
+        print("📅 sender.date: \(sender.date)")
 //        type(of: sender.datePickerStyle)
         print(type(of: sender.date))
 
         saveSelectedDate(sender.date)
+
+        processAll(sender.date)
 
 /*
 //        let word = "3월 2일, 19년"
@@ -247,11 +276,13 @@ class AnniversaryCalculatorViewController: UIViewController {
 //        updateDateLabel(day100: day100formatted, day200: day200formatted, day300: day300formatted, day400: day400formatted)
 */
 
-        let dayX00DatesArray = calculateDates(selectedDate: sender.date)
 
-        let dayX00FormattedArray = formatDates(dayX00DatesArray)
 
-        updateDateLabel(dayX00FormattedArray)
+//        let dayX00DatesArray = calculateDates(selectedDate: sender.date)
+//
+//        let dayX00FormattedArray = formatDates(dayX00DatesArray)
+//
+//        updateDateLabel(dayX00FormattedArray)
 
 
         // D-day 계산
@@ -267,6 +298,7 @@ class AnniversaryCalculatorViewController: UIViewController {
 //        print(type(of: daysLeft))
         // sender.date의 날짜는 클릭할 때마다 선택한 날짜가 들어오지만,
         // sender.date의 시간은 빌드한 시간으로 고정된다.
+        // + 추가) sender.date는 KST 0시 (GMT 15시)로 고정?
         // 미래 날짜를 골랐을 경우에는, 예를 들어 내일 날짜를 골랐을 경우, 1일 뒤가 아니라 0일 23시간 59분 뒤 이런 식으로 날짜 간격이 잡힌다.
         // 따라서 내일을 고르면 day의 값은 0으로 잡힌다.
         // 반면 과거 날짜를 골랐을 경우에는, 예를 들어 어제 날짜를 골랐을 경우, 1일 전이 아니라 1일 0시간 1분 전 이런 식으로 날짜 간격이 잡힌다.
