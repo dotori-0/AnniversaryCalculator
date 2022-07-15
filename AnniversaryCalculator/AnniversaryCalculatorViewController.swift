@@ -7,6 +7,10 @@
 
 import UIKit
 
+enum SavedData: String {
+    case savedDate
+}
+
 class AnniversaryCalculatorViewController: UIViewController {
 
 
@@ -37,12 +41,15 @@ class AnniversaryCalculatorViewController: UIViewController {
 
     @IBOutlet weak var testView: UIView!
 
+    var selectedDate = UserDefaults.standard.string(forKey: "selectedDate")
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
 //        datePicker.preferredDatePickerStyle = .inline
         setDatePickerStyle()
+        setDatePickerDate()
 
         imageViewArray = [imageView0, imageView1, imageView2, imageView3]
         dayX00LabelArray = [day100Label, day200Label, day300Label, day400Label]
@@ -68,6 +75,15 @@ class AnniversaryCalculatorViewController: UIViewController {
         } else if #available(*, iOS 14.0) {
             datePicker.preferredDatePickerStyle = .wheels
         }
+    }
+
+    func setDatePickerDate() {
+        let userDefaultsDate = UserDefaults.standard.string(forKey: SavedData.savedDate.rawValue)
+
+        let savedDate = userDefaultsDate == nil ? datePicker.date : stringToDate(userDefaultsDate!)
+        print("savedDate: \(savedDate)")
+
+        datePicker.date = savedDate
     }
     
 
@@ -107,17 +123,13 @@ class AnniversaryCalculatorViewController: UIViewController {
 
             hundreds += 1
         }
-
-//        day100Label.text = "D+100"
-//        day200Label.text = "D+200"
-//        day300Label.text = "D+300"
-//        day400Label.text = "D+400"
     }
 
 
     func designDateLabels() {
         for dateLabel in dateLabelArray {
             dateLabel.text = nil
+//            dateLabel.text = UserDefaults.standard.string(forKey: "selectedDate")
             dateLabel.textColor = .white
             dateLabel.textAlignment = .center
             dateLabel.numberOfLines = 0
@@ -159,12 +171,45 @@ class AnniversaryCalculatorViewController: UIViewController {
         }
     }
 
+
+    func saveSelectedDate(_ selectedDate: Date) {
+//        UserDefaults.standard.set(selectedDate, forKey: "selectedDate")
+        UserDefaults.standard.set(dateToString(_: selectedDate), forKey: SavedData.savedDate.rawValue)
+//        print(type(of: UserDefaults.standard.))
+        print(UserDefaults.standard.string(forKey: SavedData.savedDate.rawValue)!)
+    }
+
+
+    func dateToString(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy년\nMM월 dd일"
+
+        var stringDate: String
+        stringDate = formatter.string(from: date)
+
+        return stringDate
+    }
+
+
+    func stringToDate(_ stringDate: String) -> Date {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy년\nMM월 dd일"
+
+        var date: Date
+        date = formatter.date(from: stringDate)!
+
+        return date
+    }
+
+
     // MARK: - Action
 
     @IBAction func dateValueChanged(_ sender: UIDatePicker) {
         print(sender.date)
 //        type(of: sender.datePickerStyle)
         print(type(of: sender.date))
+
+        saveSelectedDate(sender.date)
 
 /*
 //        let word = "3월 2일, 19년"
@@ -188,7 +233,7 @@ class AnniversaryCalculatorViewController: UIViewController {
 //        formatter.locale = Locale(identifier: "ko-KR")
 //        formatter.dateStyle = .full
 //        formatter.dateStyle = .long
-//        formatter.dateFormat = "yyyy년\n MM월 dd일"
+//        formatter.dateFormat = "yyyy년\nMM월 dd일"
 //        formatter.timeStyle = .full
 //        let result = formatter.string(from: sender.date)
 //        print("result: \(result)")
