@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="121-nd-vGt">
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="121-nd-vGt">
                                 <rect key="frame" x="41.5" y="74" width="331" height="327"/>
                                 <connections>
                                     <action selector="dateValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Lh1-0b-dZV"/>
@@ -251,19 +251,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="dateLabel0" destination="vxP-1T-brq" id="5KP-EE-MyU"/>
-                        <outlet property="dateLabel1" destination="G5a-dY-vId" id="xgA-8i-8a1"/>
-                        <outlet property="dateLabel2" destination="ua6-ke-izd" id="hZN-3b-UO7"/>
-                        <outlet property="dateLabel3" destination="pdb-0l-QWx" id="fkh-MG-yXH"/>
                         <outlet property="datePicker" destination="121-nd-vGt" id="Ycl-WI-Nqg"/>
-                        <outlet property="day100Label" destination="2cf-di-NvL" id="Eiu-zC-Rgt"/>
-                        <outlet property="day200Label" destination="nuS-v8-H6V" id="PBG-Yx-QNs"/>
-                        <outlet property="day300Label" destination="VqW-WD-RKE" id="lGG-lE-7Cs"/>
-                        <outlet property="day400Label" destination="ZIi-Sy-Vde" id="zFF-jq-1oR"/>
-                        <outlet property="imageView0" destination="mmM-oy-Dd9" id="PRB-tR-DYr"/>
-                        <outlet property="imageView1" destination="FNa-m2-Fiv" id="A8P-kb-zOR"/>
-                        <outlet property="imageView2" destination="av0-dp-VJn" id="NCS-6D-ifc"/>
-                        <outlet property="imageView3" destination="QXL-HF-OHU" id="bXJ-Q6-Hu8"/>
                         <outlet property="testView" destination="Xwv-So-AX6" id="YZ1-Ak-71Y"/>
                         <outletCollection property="overlayUIViewCollection" destination="ebp-G1-FPx" collectionClass="NSMutableArray" id="cU1-sv-Knc"/>
                         <outletCollection property="overlayUIViewCollection" destination="DCn-2n-tE4" collectionClass="NSMutableArray" id="wrP-r6-gpE"/>
@@ -273,6 +261,18 @@
                         <outletCollection property="shadowUIViewCollection" destination="Crg-hQ-H5X" collectionClass="NSMutableArray" id="eLR-Pt-dTQ"/>
                         <outletCollection property="shadowUIViewCollection" destination="R7w-Fn-I1u" collectionClass="NSMutableArray" id="02I-WA-arl"/>
                         <outletCollection property="shadowUIViewCollection" destination="w1h-Wb-hVX" collectionClass="NSMutableArray" id="uo6-XM-c44"/>
+                        <outletCollection property="imageViewCollection" destination="mmM-oy-Dd9" collectionClass="NSMutableArray" id="dYT-6n-GRR"/>
+                        <outletCollection property="imageViewCollection" destination="FNa-m2-Fiv" collectionClass="NSMutableArray" id="y48-BH-2IJ"/>
+                        <outletCollection property="imageViewCollection" destination="av0-dp-VJn" collectionClass="NSMutableArray" id="uig-cG-djX"/>
+                        <outletCollection property="imageViewCollection" destination="QXL-HF-OHU" collectionClass="NSMutableArray" id="8sm-8V-WjW"/>
+                        <outletCollection property="dayX00LabelCollection" destination="2cf-di-NvL" collectionClass="NSMutableArray" id="MjA-PI-yqg"/>
+                        <outletCollection property="dayX00LabelCollection" destination="nuS-v8-H6V" collectionClass="NSMutableArray" id="KaF-Zq-JZv"/>
+                        <outletCollection property="dayX00LabelCollection" destination="VqW-WD-RKE" collectionClass="NSMutableArray" id="DRp-WF-yLM"/>
+                        <outletCollection property="dayX00LabelCollection" destination="ZIi-Sy-Vde" collectionClass="NSMutableArray" id="uzn-KP-i9A"/>
+                        <outletCollection property="dateLabelCollection" destination="vxP-1T-brq" collectionClass="NSMutableArray" id="FhR-XN-FTn"/>
+                        <outletCollection property="dateLabelCollection" destination="G5a-dY-vId" collectionClass="NSMutableArray" id="gwf-Ps-KMf"/>
+                        <outletCollection property="dateLabelCollection" destination="ua6-ke-izd" collectionClass="NSMutableArray" id="fda-z2-mDX"/>
+                        <outletCollection property="dateLabelCollection" destination="pdb-0l-QWx" collectionClass="NSMutableArray" id="znc-Xv-yhY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

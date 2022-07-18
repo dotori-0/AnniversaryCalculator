@@ -13,34 +13,38 @@ enum SavedData: String {
 
 class AnniversaryCalculatorViewController: UIViewController {
 
-
     @IBOutlet weak var datePicker: UIDatePicker!
 
-    @IBOutlet weak var imageView0: UIImageView!
-    @IBOutlet weak var imageView1: UIImageView!
-    @IBOutlet weak var imageView2: UIImageView!
-    @IBOutlet weak var imageView3: UIImageView!
+//    @IBOutlet weak var imageView0: UIImageView!
+//    @IBOutlet weak var imageView1: UIImageView!
+//    @IBOutlet weak var imageView2: UIImageView!
+//    @IBOutlet weak var imageView3: UIImageView!
+//    var imageViewArray: [UIImageView] = []
+    @IBOutlet var imageViewCollection: [UIImageView]!
+    
+//    @IBOutlet weak var day100Label: UILabel!
+//    @IBOutlet weak var day200Label: UILabel!
+//    @IBOutlet weak var day300Label: UILabel!
+//    @IBOutlet weak var day400Label: UILabel!
+//    var dayX00LabelArray: [UILabel] = []
+    @IBOutlet var dayX00LabelCollection: [UILabel]!
 
-    @IBOutlet weak var day100Label: UILabel!
-    @IBOutlet weak var day200Label: UILabel!
-    @IBOutlet weak var day300Label: UILabel!
-    @IBOutlet weak var day400Label: UILabel!
-    var dayX00LabelArray: [UILabel] = []
-
-    @IBOutlet weak var dateLabel0: UILabel!
-    @IBOutlet weak var dateLabel1: UILabel!
-    @IBOutlet weak var dateLabel2: UILabel!
-    @IBOutlet weak var dateLabel3: UILabel!
-    var dateLabelArray: [UILabel] = []
-
+//    @IBOutlet weak var dateLabel0: UILabel!
+//    @IBOutlet weak var dateLabel1: UILabel!
+//    @IBOutlet weak var dateLabel2: UILabel!
+//    @IBOutlet weak var dateLabel3: UILabel!
+//    var dateLabelArray: [UILabel] = []
+    @IBOutlet var dateLabelCollection: [UILabel]!
+    
     @IBOutlet var overlayUIViewCollection: [UIView]!
     @IBOutlet var shadowUIViewCollection: [UIView]!
 
-    var imageViewArray: [UIImageView] = []
-    var backgroundImageArray = [UIImage(named: "icecream"), UIImage(named: "macarons"), UIImage(named: "doughnut"), UIImage(named: "cake")]
+//    var backgroundImageArray = [UIImage(named: "icecream"), UIImage(named: "macarons"), UIImage(named: "doughnut"), UIImage(named: "cake")]
+    var backgroundImageNameArray = ["icecream", "macarons", "doughnut", "cake"]
 
     @IBOutlet weak var testView: UIView!
 
+    let userDefaults = UserDefaults.standard
     var selectedDate = UserDefaults.standard.string(forKey: "selectedDate")
 
     let formatter = DateFormatter()  // DateFormatter가 클래스이기 때문에 let으로 만들어도 수정 가능
@@ -49,11 +53,12 @@ class AnniversaryCalculatorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         formatter.dateFormat = "yyyy년\nMM월 dd일"
 
-        imageViewArray = [imageView0, imageView1, imageView2, imageView3]
-        dayX00LabelArray = [day100Label, day200Label, day300Label, day400Label]
-        dateLabelArray = [dateLabel0, dateLabel1, dateLabel2, dateLabel3]
+//        imageViewArray = [imageView0, imageView1, imageView2, imageView3]
+//        dayX00LabelArray = [day100Label, day200Label, day300Label, day400Label]
+//        dateLabelArray = [dateLabel0, dateLabel1, dateLabel2, dateLabel3]
 
 
 //        datePicker.preferredDatePickerStyle = .inline
@@ -87,10 +92,11 @@ class AnniversaryCalculatorViewController: UIViewController {
 
 
     func designImageviews() {
-        for i in 0..<imageViewArray.count {
-            imageViewArray[i].contentMode = .scaleAspectFill
-            imageViewArray[i].image = backgroundImageArray[i]
-            imageViewArray[i].layer.cornerRadius = 10
+        for i in 0..<imageViewCollection.count {
+            imageViewCollection[i].contentMode = .scaleAspectFill
+//            imageViewCollection[i].image = backgroundImageArray[i]
+            imageViewCollection[i].image = UIImage(named: backgroundImageNameArray[i])
+            imageViewCollection[i].layer.cornerRadius = 10
 //            imageViewArray[i].layer.shadowColor = UIColor.black.cgColor
 //            imageViewArray[i].layer.shadowOffset = CGSize(width: 0, height: 0)
 //            imageViewArray[i].layer.shadowRadius = 50
@@ -114,7 +120,7 @@ class AnniversaryCalculatorViewController: UIViewController {
     func designDayX00Labels() {
         var hundreds = 1
 
-        for dayX00Label in dayX00LabelArray {
+        for dayX00Label in dayX00LabelCollection {
             dayX00Label.font = UIFont.systemFont(ofSize: 20, weight: .black)
             dayX00Label.textColor = .white
 
@@ -126,7 +132,7 @@ class AnniversaryCalculatorViewController: UIViewController {
 
 
     func designDateLabels() {
-        for dateLabel in dateLabelArray {
+        for dateLabel in dateLabelCollection {
 //            dateLabel.text = nil
 //            dateLabel.text = UserDefaults.standard.string(forKey: "selectedDate")
             dateLabel.textColor = .white
@@ -139,7 +145,7 @@ class AnniversaryCalculatorViewController: UIViewController {
     // MARK: - On Launch
 
     func showDateAndAnniversaries() {
-        let userDefaultsDate = UserDefaults.standard.string(forKey: SavedData.savedDate.rawValue)
+        let userDefaultsDate = userDefaults.string(forKey: SavedData.savedDate.rawValue)
 
         let savedDate = userDefaultsDate == nil ? datePicker.date : stringToDate(userDefaultsDate!)
         print("savedDate: \(savedDate)")
@@ -204,8 +210,8 @@ class AnniversaryCalculatorViewController: UIViewController {
 
 
     func updateDateLabels(_ dayX00FormattedArray: [String]) {
-        for i in 0..<dateLabelArray.count {
-            dateLabelArray[i].text = dayX00FormattedArray[i]
+        for i in 0..<dateLabelCollection.count {
+            dateLabelCollection[i].text = dayX00FormattedArray[i]
         }
     }
 
@@ -222,9 +228,9 @@ class AnniversaryCalculatorViewController: UIViewController {
     // Save to UserDefaults
     func saveSelectedDate(_ selectedDate: Date) {
 //        UserDefaults.standard.set(selectedDate, forKey: "selectedDate")
-        UserDefaults.standard.set(dateToString(_: selectedDate), forKey: SavedData.savedDate.rawValue)
+        userDefaults.set(dateToString(_: selectedDate), forKey: SavedData.savedDate.rawValue)
 
-        print(UserDefaults.standard.string(forKey: SavedData.savedDate.rawValue)!)
+        print(userDefaults.string(forKey: SavedData.savedDate.rawValue)!)
     }
 
 
