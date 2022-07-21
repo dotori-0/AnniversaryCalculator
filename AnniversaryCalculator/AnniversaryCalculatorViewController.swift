@@ -92,26 +92,28 @@ class AnniversaryCalculatorViewController: UIViewController {
 
 
     func designImageviews() {
+        let radius: CGFloat = 20
         for i in 0..<imageViewCollection.count {
             imageViewCollection[i].contentMode = .scaleAspectFill
 //            imageViewCollection[i].image = backgroundImageArray[i]
             imageViewCollection[i].image = UIImage(named: backgroundImageNameArray[i])
-            imageViewCollection[i].layer.cornerRadius = 10
-//            imageViewArray[i].layer.shadowColor = UIColor.black.cgColor
-//            imageViewArray[i].layer.shadowOffset = CGSize(width: 0, height: 0)
-//            imageViewArray[i].layer.shadowRadius = 50
-//            imageViewArray[i].layer.shadowOpacity = 1.0
-//            imageViewArray[i].layer.masksToBounds = false  // cornerRadius 적용 해제
-//            imageViewArray[i].clipsToBounds = false    // cornerRadius 적용 해제
+            imageViewCollection[i].layer.cornerRadius = radius
+//            imageViewCollection[i].layer.shadowColor = UIColor.black.cgColor
+//            imageViewCollection[i].layer.shadowOffset = CGSize(width: 0, height: 0)
+//            imageViewCollection[i].layer.shadowRadius = 10
+//            imageViewCollection[i].layer.shadowOpacity = 1.0
+//            imageViewCollection[i].layer.masksToBounds = false  // 이미지 잘리지 않음
+//            imageViewCollection[i].clipsToBounds = false    // 이미지 잘리지 않음
 
             overlayUIViewCollection[i].backgroundColor = .black
             overlayUIViewCollection[i].alpha = 0.2
-            overlayUIViewCollection[i].layer.cornerRadius = 10
+            overlayUIViewCollection[i].layer.cornerRadius = radius
 
             shadowUIViewCollection[i].layer.shadowColor = UIColor.black.cgColor
             shadowUIViewCollection[i].layer.shadowOffset = CGSize(width: 0, height: 0)
-            shadowUIViewCollection[i].layer.shadowRadius = 50
+            shadowUIViewCollection[i].layer.shadowRadius = 2
             shadowUIViewCollection[i].layer.shadowOpacity = 0.5
+            shadowUIViewCollection[i].layer.cornerRadius = radius
 //            shadowUIViewCollection[i].layer.masksToBounds = true
         }
     }
